@@ -63,6 +63,38 @@ $message-lis-color: #7a7e92;
     background-color: #eaf6fd;
     height: 100vh;
     font-family: $body-font;
+  .main__page_signout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 80px);
+    .main__page_signout-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 500px;
+      height: 500px;
+      background-color: #6683F4;
+      border-radius: 50%;
+      span {
+        color: #d7e3fc;
+        font-family: $body-font;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 32px;
+      }
+
+      strong {
+        color: aliceblue;
+        font-family: $body-font;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 32px;
+      }
+    }
+  }
 }
 
 .app__header {
@@ -86,7 +118,7 @@ $message-lis-color: #7a7e92;
       cursor: pointer;
       background-color: #6683F4;
       border: none;
-      //display: none;
+      display: none;
       span {
         display: block;
         width: 20px;

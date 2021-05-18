@@ -5,7 +5,6 @@ import {Chat} from "../chat/Chat";
 
 export const MainPage = ({user, messageDB}) => {
 
-
     return (
         <>
             <section className="main__page">

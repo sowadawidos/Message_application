@@ -60,43 +60,87 @@ export const App = () => {
 
   return (
       <>
-          <div className="page">
-              <header className="app__header">
-                  <div className="container">
-                      <button className="hamburger">
-                          <span/>
-                          <span/>
-                          <span/>
-                      </button>
-                      <div className="logo">
-                          <h1 className="logo-title">
-                              <strong>Super</strong>
-                              <span>Message app</span>
-                          </h1>
-                      </div>
-                      <nav className="app__header-nav">
-                          <ul className="nav-list">
-                              {
-                                  user ?
-                                      <>
-                                          <li className="nav-list-text">
-                                              <Button onClick={signOut}>Sign Out</Button>
-                                          </li>
-                                          <li className="nav-list-text">
-                                              <a href=""><img src={user.photoURL}/></a>
-                                          </li>
-                                      </>
-                                      :
-                                      <li className="nav-list-text">
-                                          <Button onClick={signIn}>Sing In</Button>
-                                      </li>
-                              }
-                          </ul>
-                      </nav>
+          {
+              user ?
+                  <div className="page">
+                      <header className="app__header">
+                          <div className="container">
+                              <button className="hamburger">
+                                  <span/>
+                                  <span/>
+                                  <span/>
+                              </button>
+                              <div className="logo">
+                                  <h1 className="logo-title">
+                                      <strong>Super</strong>
+                                      <span>Message app</span>
+                                  </h1>
+                              </div>
+                              <nav className="app__header-nav">
+                                  <ul className="nav-list">
+                                      {
+                                          user ?
+                                              <>
+                                                  <li className="nav-list-text">
+                                                      <Button onClick={signOut}>Sign Out</Button>
+                                                  </li>
+                                                  <li className="nav-list-text">
+                                                      <a href=""><img src={user.photoURL}/></a>
+                                                  </li>
+                                              </>
+                                              :
+                                              <li className="nav-list-text">
+                                                  <Button onClick={signIn}>Sing In</Button>
+                                              </li>
+                                      }
+                                  </ul>
+                              </nav>
+                          </div>
+                      </header>
+                      <MainPage user={user} messageDB={messageDB}/>
                   </div>
-              </header>
-              <MainPage user={user} messageDB={messageDB}/>
-          </div>
+                  :
+                  <div className="page">
+                      <header className="app__header">
+                          <div className="container">
+                              <div className="logo">
+                                  <h1 className="logo-title">
+                                      <strong>Super</strong>
+                                      <span>Message app</span>
+                                  </h1>
+                              </div>
+                              <nav className="app__header-nav">
+                                  <ul className="nav-list">
+                                      {
+                                          user ?
+                                              <>
+                                                  <li className="nav-list-text">
+                                                      <Button onClick={signOut}>Sign Out</Button>
+                                                  </li>
+                                                  <li className="nav-list-text">
+                                                      <a href=""><img src={user.photoURL}/></a>
+                                                  </li>
+                                              </>
+                                              :
+                                              <li className="nav-list-text">
+                                                  <Button onClick={signIn}>Sign In</Button>
+                                              </li>
+                                      }
+                                  </ul>
+                              </nav>
+                          </div>
+                      </header>
+                      <div className="main__page_signout">
+                          <div className="main__page_signout-text">
+                              <h1 className="logo-title">
+                                  <strong>Super</strong>
+                                  <span>Message app</span>
+                              </h1>
+                              <h1>Sign in to use application</h1>
+                          </div>
+                      </div>
+                  </div>
+          }
       </>
   );
 }

@@ -39,6 +39,7 @@ export const Chat = ({user , messageDB}) => {
                 photoURL
             })
         }
+        setNewMessages("");
     }
 
     return (
@@ -56,7 +57,7 @@ export const Chat = ({user , messageDB}) => {
                                     <div key={message.id} className="messages__left">
                                         <div className="message">
                                             <p className="main__message">{message.text}</p>
-                                            <p>{formatRelative(new Date(message.date.seconds * 1000), new Date())}</p>
+                                            {/*<p>{formatRelative(new Date(message.date.seconds * 1000), new Date())}</p>*/}
                                         </div>
                                         <img src={user.photoURL}/>
                                     </div>
@@ -66,7 +67,7 @@ export const Chat = ({user , messageDB}) => {
                     }
                 </div>
                 <form onSubmit={onSubmit} className="send__messages">
-                    <input onChange={onChange} type="text" placeholder="Type Your message..."/>
+                    <input onChange={onChange} type="text" value={newMessages} placeholder="Type Your message..."/>
                     <button><img src={send}/></button>
                 </form>
             </div>
