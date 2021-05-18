@@ -14,13 +14,13 @@ export const MainPage = ({user, messageDB}) => {
                 id: uid
             })
         }
-    }, [messageDB]);
+    }, []);
 
     return (
         <>
             <section className="main__page">
                 <div className="container">
-                    <UserPageList/>
+                    <UserPageList user={user} messageDB={messageDB}/>
                     <Chat user={user} messageDB={messageDB}/>
                 </div>
             </section>
