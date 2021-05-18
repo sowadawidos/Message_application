@@ -1,0 +1,133 @@
+.chat {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .chat__users {
+    margin-top: 45px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 15px;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    p {
+      font-size: 24px;
+      margin-left: 15px;
+      margin-right: 25px;
+      font-weight: 600;
+      color: #6683F4;
+    }
+  }
+
+  .messages {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+
+    .messages__right {
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .message {
+        border-radius: 10px;
+        padding: 15px;
+        background-color: #dae8ff;
+        box-shadow: 0 0 1em #dae8ff;
+        max-width: 50%;
+
+        .main__message {
+          font-size: 16px;
+          margin-bottom: 5px;
+          font-weight: 500;
+        }
+
+        p {
+          text-align: left;
+          font-size: 10px;
+        }
+      }
+    }
+
+    .messages__left {
+      margin-right: 20px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 10px;
+      color: white;
+
+      img {
+        margin-left: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      .message {
+        border-radius: 10px;
+        padding: 15px;
+        background-color: #96adff;
+        box-shadow: 0 0 1em #96adff;
+        max-width: 50%;
+
+        .main__message {
+          font-size: 16px;
+          margin-bottom: 5px;
+          font-weight: 500;
+        }
+
+        p {
+          text-align: right;
+          font-size: 10px;
+        }
+      }
+    }
+  }
+
+  .send__messages {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    input {
+      width: 70%;
+      border: none;
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    a {
+      width: 50px;
+      height: 50px;
+      padding: 5px;
+      background-color: #96adff;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

@@ -8,12 +8,12 @@ import "./App.scss";
 import {MainPage} from "./components/main_page/MainPage";
 
 firebase.initializeApp({
-  apiKey: "AIzaSyDiGHuehmVjeTB08DcTVueINPfnZ6atwTQ",
-  authDomain: "message-appk.firebaseapp.com",
-  projectId: "message-appk",
-  storageBucket: "message-appk.appspot.com",
-  messagingSenderId: "1088403228949",
-  appId: "1:1088403228949:web:df373df2e84773f654c11c"
+    apiKey: "AIzaSyDiGHuehmVjeTB08DcTVueINPfnZ6atwTQ",
+    authDomain: "message-appk.firebaseapp.com",
+    projectId: "message-appk",
+    storageBucket: "message-appk.appspot.com",
+    messagingSenderId: "1088403228949",
+    appId: "1:1088403228949:web:df373df2e84773f654c11c"
 });
 
 const auth = firebase.auth();
@@ -21,13 +21,17 @@ const messageDB = firebase.firestore();
 
 export const App = () => {
     const [user, setUser] = useState(() => auth.currentUser)
-    console.log(user)
+    const [initializing, setInitializing] = useState(true);
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
                 setUser(user);
             } else {
                 setUser(null);
+            }
+            if (initializing) {
+                setInitializing(false);
             }
         })
         return unsubscribe;
@@ -51,6 +55,8 @@ export const App = () => {
             console.log(error.message);
         }
     }
+
+    if (initializing) return "Loading...";
 
   return (
       <>
