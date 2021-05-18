@@ -4,6 +4,17 @@ import {UserPageList} from "../user_list/UserPageList";
 import {Chat} from "../chat/Chat";
 
 export const MainPage = ({user, messageDB}) => {
+    const {uid, displayName, photoURL} = user;
+
+    useEffect(() => {
+        if (messageDB) {
+            messageDB.collection('users').add({
+                name: displayName,
+                photo: photoURL,
+                id: uid
+            })
+        }
+    }, [messageDB]);
 
     return (
         <>
