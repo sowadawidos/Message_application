@@ -1,0 +1,10 @@
+.main__page {
+  display: flex;
+
+  .container {
+    width: 1440px;
+    height: calc(100vh - 80px);
+    margin: auto;
+    display: flex;
+  }
+}

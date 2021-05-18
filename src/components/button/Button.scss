@@ -1,0 +1,16 @@
+$body-font: 'KoHo', sans-serif;
+$font-color: aliceblue;
+$message-lis-color: #7a7e92;
+
+.sign__button {
+  cursor: pointer;
+  background-color: #6683F4;
+  border: none;
+  text-transform: uppercase;
+  font-family: $body-font;
+  color: $font-color;
+  font-weight: 600;
+  &:hover {
+    color: #d7dde5;
+  }
+}

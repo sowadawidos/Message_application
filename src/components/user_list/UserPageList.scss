@@ -1,0 +1,128 @@
+$body-font: 'KoHo', sans-serif;
+$font-color: aliceblue;
+$message-lis-color: #7a7e92;
+
+.user__page-list {
+  width: 330px;
+  border-right: 1px solid #d3dce2;
+
+  .users__list {
+    margin-top: 20px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      overflow-x: scroll;
+    }
+
+    .user-search {
+      padding: 5px;
+      margin-left: 60px;
+
+      &:hover {
+        background-color: #cde0ff;
+        border-radius: 10px;
+      }
+
+      img {
+        height: 100%;
+        width: 35px;
+      }
+    }
+
+    .user-logo {
+      padding: 5px;
+
+      &:hover {
+        background-color: #cde0ff;
+        border-radius: 10px;
+      }
+
+      img {
+        height: 100%;
+        width: 40px;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .user-list {
+    margin-top: 40px;
+
+    .user-list-title {
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .users {
+      margin: 0 10px 25px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-decoration: none;
+
+      img {
+        width: 20%;
+        height: 55px;
+        border-radius: 50%;
+        margin-right: 15px;
+      }
+
+      .user-description {
+        width: 60%;
+        text-align: start;
+
+        .user-desc-unread {
+          color: #6683F4;
+          font-weight: 700;
+          text-overflow: ellipsis;
+        }
+
+        h1 {
+          font-weight: 500;
+          font-size: 18px;
+          margin-bottom: 5px;
+          color: black;
+          text-overflow: ellipsis;
+        }
+
+        p {
+          color: $message-lis-color;
+          text-overflow: ellipsis;
+        }
+      }
+
+      .user-date {
+        margin-right: 10px;
+        width: 20%;
+        color: $message-lis-color;
+        font-size: 12px;
+
+        p {
+          margin-bottom: 5px;
+        }
+      }
+    }
+
+    .users:hover::after {
+      content: ">";
+      font-size: 25px;
+      margin-left: -13px;
+    }
+  }
+}
