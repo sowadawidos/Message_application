@@ -46,6 +46,17 @@ $message-lis-color: #7a7e92;
     .user-logo {
       padding: 5px;
 
+      button {
+        border: none;
+        background-color: #eaf6fd;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #cde0ff;
+          border-radius: 10px;
+        }
+      }
+
       &:hover {
         background-color: #cde0ff;
         border-radius: 10px;

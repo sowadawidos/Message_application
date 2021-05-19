@@ -27,6 +27,14 @@ export const App = () => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
                 setUser(user);
+
+                // const {uid, displayName, photoURL} = user;
+                // messageDB.collection('users').add({
+                //     name: displayName,
+                //     photo: photoURL,
+                //     uid: uid
+                // })
+
             } else {
                 setUser(null);
             }
@@ -34,6 +42,7 @@ export const App = () => {
                 setInitializing(false);
             }
         })
+
         return unsubscribe;
     }, [])
 
@@ -89,7 +98,7 @@ export const App = () => {
                                 </nav>
                             </div>
                         </header>
-                        <MainPage user={user} messageDB={messageDB}/>
+                        <MainPage user={user} messageDB={messageDB} auth={auth}/>
                     </div>
                     :
                     <div className="page">
@@ -119,6 +128,12 @@ export const App = () => {
                                 <h1>Sign in to use application</h1>
                             </div>
                         </div>
+                        <section>
+                            <div className="wave wave1"/>
+                            <div className="wave wave2"/>
+                            <div className="wave wave3"/>
+                            <div className="wave wave4"/>
+                        </section>
                     </div>
             }
         </>

@@ -1,24 +1,24 @@
 import React, {useState, useEffect} from "react";
 import "./Chat.scss";
 import send from "../../images/send.svg";
-import { formatRelative } from 'date-fns';
+import {formatRelative} from 'date-fns';
 import firebase from "firebase/app";
 
-export const Chat = ({user , messageDB}) => {
+export const Chat = ({user, messageDB, messages}) => {
 
-    const [messages, setMessages] = useState([]);
+    const [message, setMessage] = useState([]);
     const [newMessages, setNewMessages] = useState('');
 
     const {uid, displayName, photoURL} = user;
 
     useEffect(() => {
         if (messageDB) {
-            messageDB.collection('messages').orderBy('date').onSnapshot(querySnapshot => {
+            messageDB.collection('messages').doc('ax7NiQ3PCjSi7iUNjWiR').collection('message').orderBy('date').onSnapshot(querySnapshot => {
                 const data = querySnapshot.docs.map(doc => ({
                     ...doc.data(),
                     id: doc.id,
                 }))
-                setMessages(data);
+                setMessage(data);
             })
         }
     }, [messageDB]);
@@ -31,7 +31,7 @@ export const Chat = ({user , messageDB}) => {
         e.preventDefault();
 
         if (messageDB) {
-            messageDB.collection('messages').add({
+            messageDB.collection('messages').doc('ax7NiQ3PCjSi7iUNjWiR').collection('message').add({
                 text: newMessages,
                 date: firebase.firestore.FieldValue.serverTimestamp(),
                 uid,
@@ -51,16 +51,27 @@ export const Chat = ({user , messageDB}) => {
                 </div>
                 <div className="messages">
                     {
-                        messages.map(message => {
+                        message.map(message => {
                             return (
                                 <>
-                                    <div key={message.id} className="messages__left">
-                                        <div className="message">
-                                            <p className="main__message">{message.text}</p>
-                                            {/*<p>{formatRelative(new Date(message.date.seconds * 1000), new Date())}</p>*/}
-                                        </div>
-                                        <img src={user.photoURL}/>
-                                    </div>
+                                    {
+                                        uid === message.uid ?
+                                            <div key={message.id} className={`messages__left`}>
+                                                <div className="message">
+                                                    <p className="main__message">{message.text}</p>
+                                                    {/*<p>{formatRelative(new Date(message.date.seconds * 1000), new Date())}</p>*/}
+                                                </div>
+                                                <img src={message.photoURL} alt={"avatar"}/>
+                                            </div>
+                                            :
+                                            <div key={message.id} className={`messages__right`}>
+                                                <img src={message.photoURL} alt={"avatar"}/>
+                                                <div className="message">
+                                                    <p className="main__message">{message.text}</p>
+                                                    {/*<p>{formatRelative(new Date(message.date.seconds * 1000), new Date())}</p>*/}
+                                                </div>
+                                            </div>
+                                    }
                                 </>
                             )
                         })
