@@ -23,14 +23,13 @@ $message-lis-color: #7a7e92;
       height: 100%;
       width: 100%;
       display: flex;
-      justify-content: space-around;
+      justify-content: flex-start;
       align-items: center;
       overflow-x: scroll;
     }
 
     .user-search {
       padding: 5px;
-      margin-left: 60px;
 
       &:hover {
         background-color: #cde0ff;
@@ -88,14 +87,14 @@ $message-lis-color: #7a7e92;
       text-decoration: none;
 
       img {
-        width: 20%;
+        width: 55px;
         height: 55px;
         border-radius: 50%;
         margin-right: 15px;
       }
 
       .user-description {
-        width: 60%;
+        width: 240px;
         text-align: start;
 
         .user-desc-unread {
@@ -120,7 +119,7 @@ $message-lis-color: #7a7e92;
 
       .user-date {
         margin-right: 10px;
-        width: 20%;
+        width: 26%;
         color: $message-lis-color;
         font-size: 12px;
 

@@ -4,7 +4,7 @@ import send from "../../images/send.svg";
 import {formatRelative} from 'date-fns';
 import firebase from "firebase/app";
 
-export const Chat = ({user, messageDB, messages}) => {
+export const Chat = ({user, messageDB, messageID, image, name}) => {
 
     const [message, setMessage] = useState([]);
     const [newMessages, setNewMessages] = useState('');
@@ -13,7 +13,7 @@ export const Chat = ({user, messageDB, messages}) => {
 
     useEffect(() => {
         if (messageDB) {
-            messageDB.collection('messages').doc('ax7NiQ3PCjSi7iUNjWiR').collection('message').orderBy('date').onSnapshot(querySnapshot => {
+            messageDB.collection('messages').doc(`${messageID}`).collection('message').orderBy('date').onSnapshot(querySnapshot => {
                 const data = querySnapshot.docs.map(doc => ({
                     ...doc.data(),
                     id: doc.id,
@@ -21,6 +21,7 @@ export const Chat = ({user, messageDB, messages}) => {
                 setMessage(data);
             })
         }
+
     }, [messageDB]);
 
     const onChange = e => {
@@ -31,7 +32,7 @@ export const Chat = ({user, messageDB, messages}) => {
         e.preventDefault();
 
         if (messageDB) {
-            messageDB.collection('messages').doc('ax7NiQ3PCjSi7iUNjWiR').collection('message').add({
+            messageDB.collection('messages').doc(`${messageID}`).collection('message').add({
                 text: newMessages,
                 date: firebase.firestore.FieldValue.serverTimestamp(),
                 uid,
@@ -46,8 +47,8 @@ export const Chat = ({user, messageDB, messages}) => {
         <>
             <div className="chat">
                 <div className="chat__users">
-                    <img src="man_photo1.jpeg"/>
-                    <p>Dawid Sowiński</p>
+                    <img src={image}/>
+                    <p>{name}</p>
                 </div>
                 <div className="messages">
                     {
@@ -59,7 +60,11 @@ export const Chat = ({user, messageDB, messages}) => {
                                             <div key={message.id} className={`messages__left`}>
                                                 <div className="message">
                                                     <p className="main__message">{message.text}</p>
-                                                    {/*<p>{formatRelative(new Date(message.date.seconds * 1000), new Date())}</p>*/}
+                                                    <p>
+                                                        {
+                                                            `${new Date((message.date * 1000) - 62135638488000).toLocaleDateString()} ${new Date(message.date * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}`
+                                                        }
+                                                    </p>
                                                 </div>
                                                 <img src={message.photoURL} alt={"avatar"}/>
                                             </div>
@@ -68,7 +73,11 @@ export const Chat = ({user, messageDB, messages}) => {
                                                 <img src={message.photoURL} alt={"avatar"}/>
                                                 <div className="message">
                                                     <p className="main__message">{message.text}</p>
-                                                    {/*<p>{formatRelative(new Date(message.date.seconds * 1000), new Date())}</p>*/}
+                                                    <p>
+                                                        {
+                                                            `${new Date((message.date * 1000) - 62135638488000).toLocaleDateString()} ${new Date(message.date * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}`
+                                                        }
+                                                    </p>
                                                 </div>
                                             </div>
                                     }
