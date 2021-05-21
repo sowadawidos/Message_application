@@ -18,15 +18,19 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   vertical-align: baseline;
   background: transparent;
 }
+
 body {
   line-height: 1;
 }
+
 ol, ul {
   list-style: none;
 }
+
 blockquote, q {
   quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: '';
@@ -42,6 +46,7 @@ q:before, q:after {
 ins {
   text-decoration: none;
 }
+
 del {
   text-decoration: line-through;
 }
@@ -59,16 +64,19 @@ $message-lis-color: #7a7e92;
 * {
   box-sizing: border-box;
 }
+
 .page {
-    background-color: #eaf6fd;
-    height: 100vh;
-    font-family: $body-font;
+  background-color: #eaf6fd;
+  height: 100vh;
+  font-family: $body-font;
+
   .main__page_signout {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: calc(100vh - 80px);
+
     .main__page_signout-text {
       display: flex;
       justify-content: center;
@@ -79,6 +87,7 @@ $message-lis-color: #7a7e92;
       background-color: #6683F4;
       border-radius: 50%;
       box-shadow: 0 0 1em #6683F4;
+
       span {
         color: #d7e3fc;
         font-family: $body-font;
@@ -120,6 +129,7 @@ $message-lis-color: #7a7e92;
       background-color: #6683F4;
       border: none;
       display: none;
+
       span {
         display: block;
         width: 20px;
@@ -176,6 +186,7 @@ $message-lis-color: #7a7e92;
 
 .page {
   position: relative;
+
   section {
     .wave {
       position: absolute;
@@ -185,6 +196,7 @@ $message-lis-color: #7a7e92;
       height: 100px;
       background: url("images/wave.png");
       background-size: 1000px 100px;
+
       &.wave1 {
         animation: animate 30s linear infinite;
         z-index: 1000;
@@ -192,6 +204,7 @@ $message-lis-color: #7a7e92;
         animation-delay: 0s;
         bottom: 0;
       }
+
       &.wave2 {
         animation: animate2 15s linear infinite;
         z-index: 999;
@@ -199,6 +212,7 @@ $message-lis-color: #7a7e92;
         animation-delay: -5s;
         bottom: 10px;
       }
+
       &.wave3 {
         animation: animate 30s linear infinite;
         z-index: 998;
@@ -206,6 +220,7 @@ $message-lis-color: #7a7e92;
         animation-delay: -2s;
         bottom: 15px;
       }
+
       &.wave4 {
         animation: animate2 5s linear infinite;
         z-index: 997;
@@ -225,6 +240,7 @@ $message-lis-color: #7a7e92;
     background-position-x: 1000px;
   }
 }
+
 @keyframes animate2 {
   0% {
     background-position-x: 0;
@@ -233,6 +249,7 @@ $message-lis-color: #7a7e92;
     background-position-x: -1000px;
   }
 }
+
 @keyframes animate3 {
   0% {
     background-position-x: 0;
@@ -247,23 +264,29 @@ $message-lis-color: #7a7e92;
     .container {
       .user__page-list {
         width: 220px;
+
         .user-list {
           .users {
             text-align: center;
+
             img {
               width: 40px;
               height: 40px;
             }
+
             .user-date {
               margin-right: 20px;
             }
+
             .user-description {
               .user-desc-unread {
                 font-size: 16px;
               }
+
               h1 {
                 font-size: 16px;
               }
+
               p {
                 width: 90px;
                 height: 20px;
@@ -278,6 +301,14 @@ $message-lis-color: #7a7e92;
 }
 
 @media (max-width: 680px) {
+  .page {
+    .main__page_signout {
+      .main__page_signout-text {
+        width: 350px;
+        height: 350px;
+      }
+    }
+  }
   .app__header {
     .container {
       .hamburger {
@@ -285,6 +316,7 @@ $message-lis-color: #7a7e92;
       }
 
       display: flex;
+
       .logo {
         margin: auto;
       }
@@ -298,19 +330,23 @@ $message-lis-color: #7a7e92;
         left: -220px;
         transition: 1s;
       }
+
       .user__page-list.show {
         left: 0;
         height: 100vh;
       }
     }
+
     .chat {
       width: 100%;
       transition: 0.5s;
     }
+
     .chat.show {
       width: 70%;
       left: 200px;
       display: none;
+
       .messages {
         overflow-y: scroll;
       }
@@ -325,21 +361,27 @@ $message-lis-color: #7a7e92;
         strong {
           font-size: 16px;
         }
+
         span {
           font-size: 16px;
         }
       }
+
       .nav-list {
         margin-right: 15px;
+
         .nav-list-text {
           width: 45px;
           text-align: right;
+
           button {
             font-size: 10px;
           }
+
           a {
             margin-left: 0;
             font-size: 12px;
+
             img {
               margin-right: 0;
               height: 35px;

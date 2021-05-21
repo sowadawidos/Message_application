@@ -48,6 +48,7 @@ export const UserPageList = ({user, messageDB, active}) => {
         setName(name);
     }
 
+
     return (
         <>
             <div className={active ? `user__page-list show` : `user__page-list`}>
@@ -80,7 +81,7 @@ export const UserPageList = ({user, messageDB, active}) => {
                     <h1 className="user-list-title">Messages</h1>
                     {
                         messages.map(chat => {
-                            const image = users.map(el => el.uid.includes(chat.userFirstID) ? el.photo : null)
+                            // const image = users.map(el => el.uid.includes(chat.userFirstID) ? el.photo : null)
                             const name = users.map(el => el.uid.includes(chat.userFirstID) ? el.name : null)
 
                             return (
