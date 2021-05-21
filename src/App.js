@@ -22,18 +22,20 @@ const messageDB = firebase.firestore();
 export const App = () => {
     const [user, setUser] = useState(() => auth.currentUser)
     const [initializing, setInitializing] = useState(true);
+    const [active, setActive] = useState(false);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
                 setUser(user);
 
-                // const {uid, displayName, photoURL} = user;
-                // messageDB.collection('users').add({
-                //     name: displayName,
-                //     photo: photoURL,
-                //     uid: uid
-                // })
+                const {uid, displayName, photoURL} = user;
+
+                messageDB.collection('users').doc(`${uid}`).set({
+                    name: displayName,
+                    photo: photoURL,
+                    uid: uid
+                })
 
             } else {
                 setUser(null);
@@ -44,7 +46,14 @@ export const App = () => {
         })
 
         return unsubscribe;
-    }, [])
+    }, [initializing])
+
+    // const checkUser = users => {
+    //     const test = users.some(user1 => {
+    //         return user1.uid.includes(user.uid);
+    //     })
+    //     console.log(auth);
+    // }
 
     const signIn = async () => {
         const provider = new firebase.auth.GoogleAuthProvider();
@@ -65,6 +74,11 @@ export const App = () => {
         }
     }
 
+    const toggleClass = event => {
+        event.preventDefault();
+        setActive(!active);
+
+    }
     if (initializing) return "Loading...";
 
     return (
@@ -74,7 +88,7 @@ export const App = () => {
                     <div className="page">
                         <header className="app__header">
                             <div className="container">
-                                <button className="hamburger">
+                                <button onClick={toggleClass} className="hamburger">
                                     <span/>
                                     <span/>
                                     <span/>
@@ -98,7 +112,7 @@ export const App = () => {
                                 </nav>
                             </div>
                         </header>
-                        <MainPage user={user} messageDB={messageDB} auth={auth}/>
+                        <MainPage user={user} messageDB={messageDB} active={active}/>
                     </div>
                     :
                     <div className="page">

@@ -295,20 +295,22 @@ $message-lis-color: #7a7e92;
     .container {
       .user__page-list {
         position: absolute;
-        left: -200px;
+        left: -220px;
         transition: 1s;
       }
       .user__page-list.show {
         left: 0;
+        height: 100vh;
       }
     }
     .chat {
       width: 100%;
+      transition: 0.5s;
     }
     .chat.show {
       width: 70%;
-      position: absolute;
       left: 200px;
+      display: none;
       .messages {
         overflow-y: scroll;
       }
@@ -328,16 +330,21 @@ $message-lis-color: #7a7e92;
         }
       }
       .nav-list {
+        margin-right: 15px;
         .nav-list-text {
           width: 45px;
           text-align: right;
-          a {
-            margin-left: 10px;
-            font-size: 12px;
+          button {
+            font-size: 10px;
           }
-          img {
-            height: 35px;
-            width: 35px;
+          a {
+            margin-left: 0;
+            font-size: 12px;
+            img {
+              margin-right: 0;
+              height: 35px;
+              width: 35px;
+            }
           }
         }
       }

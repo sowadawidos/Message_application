@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from "react";
 import "./Chat.scss";
 import send from "../../images/send.svg";
-import {formatRelative} from 'date-fns';
 import firebase from "firebase/app";
 
-export const Chat = ({user, messageDB, messageID, image, name}) => {
+export const Chat = ({user, messageDB, messageID, image, name, active}) => {
 
     const [message, setMessage] = useState([]);
     const [newMessages, setNewMessages] = useState('');
@@ -22,7 +21,7 @@ export const Chat = ({user, messageDB, messageID, image, name}) => {
             })
         }
 
-    }, [messageDB]);
+    }, [messageID, messageDB]);
 
     const onChange = e => {
         setNewMessages(e.target.value);
@@ -45,9 +44,9 @@ export const Chat = ({user, messageDB, messageID, image, name}) => {
 
     return (
         <>
-            <div className="chat">
+            <div className={active ? `chat show` : `chat`}>
                 <div className="chat__users">
-                    <img src={image}/>
+                    <img src={image} alt="avatar"/>
                     <p>{name}</p>
                 </div>
                 <div className="messages">
@@ -88,7 +87,7 @@ export const Chat = ({user, messageDB, messageID, image, name}) => {
                 </div>
                 <form onSubmit={onSubmit} className="send__messages">
                     <input onChange={onChange} type="text" value={newMessages} placeholder="Type Your message..."/>
-                    <button><img src={send}/></button>
+                    <button><img src={send} alt="send button"/></button>
                 </form>
             </div>
         </>
