@@ -11,8 +11,6 @@ export const UserPageList = ({user, messageDB, active}) => {
     const [image, setImage] = useState();
     const [name, setName] = useState();
 
-    // checkUser(users);
-
     useEffect(() => {
         if (messageDB) {
             messageDB.collection('users').onSnapshot(querySnapshot => {
@@ -32,7 +30,7 @@ export const UserPageList = ({user, messageDB, active}) => {
         }
     }, [messageDB]);
 
-    const getUser = (chatUser) => {
+    const getUser = chatUser => {
         if (messageDB) {
             messageDB.collection('messages').add({
                 userSecondID: user.uid,
@@ -81,19 +79,21 @@ export const UserPageList = ({user, messageDB, active}) => {
                     <h1 className="user-list-title">Messages</h1>
                     {
                         messages.map(chat => {
-                            // const image = users.map(el => el.uid.includes(chat.userFirstID) ? el.photo : null)
-                            const name = users.map(el => el.uid.includes(chat.userFirstID) ? el.name : null)
-
+                            const checkedUser = users.filter(user => user.uid === chat.userFirstID);
+                            const checkedUser2 = users.filter(user => user.uid === chat.userSecondID);
+                            console.log(checkedUser);
+                            console.log(checkedUser2);
                             return (
                                 <>
                                     {
-                                        chat.userFirstID === user.uid || chat.userSecondID === user.uid ?
+                                        chat.userFirstID === user.id || chat.userSecondID === user.uid ?
                                             <li key={chat.id}>
-                                                <a onClick={event => getChatID(chat.id, event, image, name)} href=""
+                                                <a onClick={event => getChatID(chat.id, event, checkedUser[0].photo, checkedUser[0].name)}
+                                                   href=""
                                                    className="users">
-                                                    <img src={image} alt="avatar"/>
+                                                    <img src={checkedUser[0].photo} alt="avatar"/>
                                                     <div className="user-description">
-                                                        <h1 className="user-desc-unread">{name}</h1>
+                                                        <h1 className="user-desc-unread">{checkedUser[0].name}</h1>
                                                     </div>
                                                 </a>
                                             </li>

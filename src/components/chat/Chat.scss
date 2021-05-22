@@ -31,12 +31,14 @@
   .messages {
     overflow-y: scroll;
     scroll-behavior: smooth;
+    height: 860px;
 
     .messages__right {
       margin-left: 20px;
       display: flex;
       align-items: center;
       margin-bottom: 10px;
+      height: 85px;
 
       img {
         width: 50px;
@@ -72,6 +74,7 @@
       align-items: center;
       margin-bottom: 10px;
       color: white;
+      height: 85px;
 
       img {
         margin-left: 10px;
