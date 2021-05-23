@@ -39,11 +39,18 @@ export const UserPageList = ({user, messageDB, active}) => {
         }
     }
 
-    const getChatID = (chatID, event, image, name) => {
+    const getChatID = (chatID, event, checkedUser, checkedUser2) => {
         event.preventDefault();
         setMessageID(chatID);
-        setImage(image);
-        setName(name);
+
+        if (user.uid === checkedUser2.uid) {
+            setImage(checkedUser.photo);
+            setName(checkedUser.name);
+        } else {
+            setImage(checkedUser2.photo);
+            setName(checkedUser2.name);
+        }
+
     }
 
 
@@ -81,19 +88,24 @@ export const UserPageList = ({user, messageDB, active}) => {
                         messages.map(chat => {
                             const checkedUser = users.filter(user => user.uid === chat.userFirstID);
                             const checkedUser2 = users.filter(user => user.uid === chat.userSecondID);
-                            console.log(checkedUser);
-                            console.log(checkedUser2);
+
                             return (
                                 <>
                                     {
-                                        chat.userFirstID === user.id || chat.userSecondID === user.uid ?
+                                        chat.userFirstID === user.uid || chat.userSecondID === user.uid ?
                                             <li key={chat.id}>
-                                                <a onClick={event => getChatID(chat.id, event, checkedUser[0].photo, checkedUser[0].name)}
+                                                <a onClick={event => getChatID(chat.id, event, checkedUser[0], checkedUser2[0])}
                                                    href=""
                                                    className="users">
-                                                    <img src={checkedUser[0].photo} alt="avatar"/>
+                                                    <img src={
+                                                        user.uid === chat.userFirstID ? checkedUser2[0].photo : checkedUser[0].photo
+                                                    } alt="avatar"/>
                                                     <div className="user-description">
-                                                        <h1 className="user-desc-unread">{checkedUser[0].name}</h1>
+                                                        <h1 className="user-desc-unread">
+                                                            {
+                                                            user.uid === chat.userFirstID ? checkedUser2[0].name : checkedUser[0].name
+                                                            }
+                                                        </h1>
                                                     </div>
                                                 </a>
                                             </li>

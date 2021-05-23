@@ -42,6 +42,7 @@ export const Chat = ({user, messageDB, messageID, image, name, active}) => {
         setNewMessages("");
     }
 
+
     return (
         <>
             <div className={active ? `chat show` : `chat`}>
