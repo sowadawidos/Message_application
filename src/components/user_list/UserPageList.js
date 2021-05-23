@@ -60,15 +60,15 @@ export const UserPageList = ({user, messageDB, active}) => {
                 <div className="users__list">
                     <h1>Users</h1>
                     <ul>
-                        <li className="user-search"><a href="#"><img src={logo}/></a></li>
+                        <li className="user-search"><a href="#"><img src={logo} alt="search"/></a></li>
                         {
-                            users.map(users => {
+                            users.map(logged_user => {
                                 return (
                                     <>
                                         {
-                                            users.uid !== user.uid ?
-                                                <li key={users.id} className="user-logo">
-                                                    <button onClick={() => getUser(users)}><img src={users.photo}/>
+                                            logged_user.uid !== user.uid ?
+                                                <li key={logged_user.id} className="user-logo">
+                                                    <button onClick={() => getUser(logged_user)}><img src={logged_user.photo} alt="photo"/>
                                                     </button>
                                                 </li>
                                                 :
