@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import "./Chat.scss";
 import send from "../../images/send.svg";
 import firebase from "firebase/app";
+import moment from "moment";
 
 export const Chat = ({user, messageDB, messageID, image, name, active}) => {
 
@@ -43,6 +44,7 @@ export const Chat = ({user, messageDB, messageID, image, name, active}) => {
     }
 
 
+    console.log(message);
     return (
         <>
             <div className={active ? `chat show` : `chat`}>
@@ -62,7 +64,8 @@ export const Chat = ({user, messageDB, messageID, image, name, active}) => {
                                                     <p className="main__message">{message.text}</p>
                                                     <p>
                                                         {
-                                                            `${new Date((message.date * 1000) - 62135638488000).toLocaleDateString()} ${new Date(message.date * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}`
+                                                            // `${new Date((message.date * 1000) - 62135638488000).toLocaleDateString()} ${new Date(message.date * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}`
+                                                            `${moment(new Date((message.date * 1000) - 62135638488000)).fromNow()}`
                                                         }
                                                     </p>
                                                 </div>
@@ -75,7 +78,8 @@ export const Chat = ({user, messageDB, messageID, image, name, active}) => {
                                                     <p className="main__message">{message.text}</p>
                                                     <p>
                                                         {
-                                                            `${new Date((message.date * 1000) - 62135638488000).toLocaleDateString()} ${new Date(message.date * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}`
+                                                            // `${new Date((message.date * 1000) - 62135638488000).toLocaleDateString()} ${new Date(message.date * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}`
+                                                            `${moment(new Date((message.date * 1000) - 62135638488000)).fromNow()}`
                                                         }
                                                     </p>
                                                 </div>

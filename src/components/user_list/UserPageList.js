@@ -31,8 +31,17 @@ export const UserPageList = ({user, messageDB, active}) => {
     }, [messageDB]);
 
     const getUser = chatUser => {
-        if (messageDB) {
-            messageDB.collection('messages').add({
+        if (messages.length > 0) {
+            messages.forEach(message => {
+                if (message.userFirstID === chatUser.uid || message.userSecondID === user.uid) {
+                    messageDB.collection('messages').doc(`${user.uid}${chatUser.uid}`).set({
+                        userSecondID: user.uid,
+                        userFirstID: chatUser.uid
+                    })
+                }
+            })
+        } else {
+            messageDB.collection('messages').doc(`${user.uid}${chatUser.uid}`).set({
                 userSecondID: user.uid,
                 userFirstID: chatUser.uid
             })
@@ -68,7 +77,8 @@ export const UserPageList = ({user, messageDB, active}) => {
                                         {
                                             logged_user.uid !== user.uid ?
                                                 <li key={logged_user.id} className="user-logo">
-                                                    <button onClick={() => getUser(logged_user)}><img src={logged_user.photo} alt="photo"/>
+                                                    <button onClick={() => getUser(logged_user)}><img
+                                                        src={logged_user.photo} alt="photo"/>
                                                     </button>
                                                 </li>
                                                 :
@@ -103,7 +113,7 @@ export const UserPageList = ({user, messageDB, active}) => {
                                                     <div className="user-description">
                                                         <h1 className="user-desc-unread">
                                                             {
-                                                            user.uid === chat.userFirstID ? checkedUser2[0].name : checkedUser[0].name
+                                                                user.uid === chat.userFirstID ? checkedUser2[0].name : checkedUser[0].name
                                                             }
                                                         </h1>
                                                     </div>
