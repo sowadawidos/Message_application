@@ -8,7 +8,7 @@ $message-lis-color: #7a7e92;
 
   .users__list {
     margin-top: 20px;
-    height: 60px;
+    height: 100px;
     justify-content: center;
     align-items: center;
 
@@ -54,6 +54,12 @@ $message-lis-color: #7a7e92;
           background-color: #cde0ff;
           border-radius: 10px;
         }
+      }
+      .user-logo-name {
+        margin-top: 2px;
+        font-size: 12px;
+        text-align: center;
+        font-weight: 600;
       }
 
       &:hover {

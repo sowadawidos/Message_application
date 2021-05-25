@@ -80,6 +80,7 @@ export const UserPageList = ({user, messageDB, active}) => {
                                                     <button onClick={() => getUser(logged_user)}><img
                                                         src={logged_user.photo} alt="photo"/>
                                                     </button>
+                                                    <p className="user-logo-name">{logged_user.name}</p>
                                                 </li>
                                                 :
                                                 null

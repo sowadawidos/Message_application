@@ -48,12 +48,6 @@ export const App = () => {
         return unsubscribe;
     }, [initializing])
 
-    // const checkUser = users => {
-    //     const test = users.some(user1 => {
-    //         return user1.uid.includes(user.uid);
-    //     })
-    //     console.log(auth);
-    // }
 
     const signIn = async () => {
         const provider = new firebase.auth.GoogleAuthProvider();
@@ -88,7 +82,7 @@ export const App = () => {
                     <div className="page">
                         <header className="app__header">
                             <div className="container">
-                                <button onClick={toggleClass} className="hamburger">
+                                <button onClick={toggleClass} className={active ? "hamburger show" : "hamburger"}>
                                     <span/>
                                     <span/>
                                     <span/>

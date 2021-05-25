@@ -1,5 +1,5 @@
 .chat {
-  width: 70%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -68,7 +68,7 @@
     }
 
     .messages__left {
-      margin-right: 20px;
+      margin-right: 43px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -112,9 +112,13 @@
 
     input {
       width: 70%;
-      border: none;
+      //border: none;
       border-radius: 10px;
       padding: 15px;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+      border: 1px solid #6683F4;
+
     }
 
     button {
@@ -128,6 +132,8 @@
       align-items: center;
       border: none;
       cursor: pointer;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
     }
 
     img {
@@ -135,4 +141,19 @@
       height: 30px;
     }
   }
+}
+@media (max-width: 510px) {
+  .chat {
+    .chat__users {
+      margin-top: 20px;
+      img  {
+        width: 35px;
+        height: 35px;
+      }
+      p {
+        font-size: 22px;
+      }
+    }
+  }
+
 }

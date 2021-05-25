@@ -314,7 +314,23 @@ $message-lis-color: #7a7e92;
       .hamburger {
         display: block;
       }
-
+      .hamburger.show {
+        width: 32px;
+        height: 23px;
+        span:nth-child(1) {
+          display: none;
+        }
+        span:nth-child(2) {
+          transform: rotate(45deg);
+          position: absolute;
+          transition: 0.5s;
+        }
+        span:nth-child(3) {
+          transform: rotate(-45deg);
+          position: absolute;
+          transition: 0.5s;
+        }
+      }
       display: flex;
 
       .logo {
@@ -329,6 +345,8 @@ $message-lis-color: #7a7e92;
         position: absolute;
         left: -220px;
         transition: 1s;
+        z-index: 9999;
+        background-color: #eaf6fd;
       }
 
       .user__page-list.show {
@@ -343,10 +361,6 @@ $message-lis-color: #7a7e92;
     }
 
     .chat.show {
-      width: 70%;
-      left: 200px;
-      display: none;
-
       .messages {
         overflow-y: scroll;
       }
