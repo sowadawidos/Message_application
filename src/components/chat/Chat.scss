@@ -1,3 +1,38 @@
+.page.dark-theme {
+  .chat {
+    .chat__users {
+      p {
+        color: white;
+      }
+    }
+    .messages {
+      .messages__left {
+        .message {
+          background-color: #D1C3FF;
+          box-shadow: 0 0 1em #D1C3FF;
+          p {
+            color: black;
+          }
+        }
+      }
+      .messages__right {
+        .message {
+          background-color: #5A42D2;
+          box-shadow: 0 0 1em #5A42D2;
+          p {
+            color: white;
+          }
+        }
+      }
+    }
+    .send__messages {
+      button {
+        background-color: #D1C3FF;
+      }
+    }
+  }
+}
+
 .chat {
   width: 100%;
   display: flex;
@@ -142,8 +177,45 @@
     }
   }
 }
+@media (min-width: 1440px) {
+  .page {
+    .chat {
+      .send__messages {
+        input {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  .page.dark-theme {
+    .chat {
+      .send__messages {
+        input {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+}
 @media (max-width: 510px) {
   .chat {
+    .messages {
+      .messages__left {
+        margin-right: 20px;
+        img {
+          width: 35px;
+          height: 35px;
+        }
+      }
+      .messages__right {
+        img {
+          width: 35px;
+          height: 35px;
+        }
+      }
+    }
     .chat__users {
       margin-top: 20px;
       img  {

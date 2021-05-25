@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 import "./UserPageList.scss";
-import logo from "../../images/search.svg";
 import {Chat} from "../chat/Chat";
+import {UserSearch} from "./UserSearch";
+import {UserMessages} from "./UserMessages";
 
 export const UserPageList = ({user, messageDB, active}) => {
 
@@ -66,70 +67,8 @@ export const UserPageList = ({user, messageDB, active}) => {
     return (
         <>
             <div className={active ? `user__page-list show` : `user__page-list`}>
-                <div className="users__list">
-                    <h1>Users</h1>
-                    <ul>
-                        <li className="user-search"><a href="#"><img src={logo} alt="search"/></a></li>
-                        {
-                            users.map(logged_user => {
-                                return (
-                                    <>
-                                        {
-                                            logged_user.uid !== user.uid ?
-                                                <li key={logged_user.id} className="user-logo">
-                                                    <button onClick={() => getUser(logged_user)}><img
-                                                        src={logged_user.photo} alt="photo"/>
-                                                    </button>
-                                                    <p className="user-logo-name">{logged_user.name}</p>
-                                                </li>
-                                                :
-                                                null
-                                        }
-
-                                    </>
-                                )
-                            })
-                        }
-
-                    </ul>
-                </div>
-                <ul className="user-list">
-                    <h1 className="user-list-title">Messages</h1>
-                    {
-                        messages.map(chat => {
-                            const checkedUser = users.filter(user => user.uid === chat.userFirstID);
-                            const checkedUser2 = users.filter(user => user.uid === chat.userSecondID);
-
-                            return (
-                                <>
-                                    {
-                                        chat.userFirstID === user.uid || chat.userSecondID === user.uid ?
-                                            <li key={chat.id}>
-                                                <a onClick={event => getChatID(chat.id, event, checkedUser[0], checkedUser2[0])}
-                                                   href=""
-                                                   className="users">
-                                                    <img src={
-                                                        user.uid === chat.userFirstID ? checkedUser2[0].photo : checkedUser[0].photo
-                                                    } alt="avatar"/>
-                                                    <div className="user-description">
-                                                        <h1 className="user-desc-unread">
-                                                            {
-                                                                user.uid === chat.userFirstID ? checkedUser2[0].name : checkedUser[0].name
-                                                            }
-                                                        </h1>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            :
-                                            null
-                                    }
-
-                                </>
-
-                            )
-                        })
-                    }
-                </ul>
+                <UserSearch users={users} user={user} getUser={getUser}/>
+                <UserMessages users={users} user={user} getChatID={getChatID} messages={messages}/>
             </div>
             {
                 messageID ?

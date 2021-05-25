@@ -3,9 +3,11 @@ import './App.scss';
 import 'firebase/auth';
 import firebase from "firebase/app";
 import 'firebase/firestore';
-import {Button} from "./components/button/Button";
 import "./App.scss";
 import {MainPage} from "./components/main_page/MainPage";
+import {HeaderMain} from "./components/header/HeaderMain";
+import {HeaderStartPage} from "./components/header/HeaderStartPage";
+import {MainStartPage} from "./components/main_page/MainStartPage";
 
 firebase.initializeApp({
     apiKey: "AIzaSyDiGHuehmVjeTB08DcTVueINPfnZ6atwTQ",
@@ -48,6 +50,7 @@ export const App = () => {
         return unsubscribe;
     }, [initializing])
 
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
     const signIn = async () => {
         const provider = new firebase.auth.GoogleAuthProvider();
@@ -73,75 +76,21 @@ export const App = () => {
         setActive(!active);
 
     }
+
     if (initializing) return "Loading...";
 
     return (
         <>
             {
                 user ?
-                    <div className="page">
-                        <header className="app__header">
-                            <div className="container">
-                                <button onClick={toggleClass} className={active ? "hamburger show" : "hamburger"}>
-                                    <span/>
-                                    <span/>
-                                    <span/>
-                                </button>
-                                <div className="logo">
-                                    <h1 className="logo-title">
-                                        <strong>Super</strong>
-                                        <span>Message app</span>
-                                    </h1>
-                                </div>
-                                <nav className="app__header-nav">
-                                    <ul className="nav-list">
-                                        <li className="nav-list-text">
-                                            <Button onClick={signOut}>Sign Out</Button>
-                                        </li>
-                                        <li className="nav-list-text">
-                                            <a href=""><img src={user.photoURL}/></a>
-                                        </li>
-
-                                    </ul>
-                                </nav>
-                            </div>
-                        </header>
+                    <div className={ prefersDarkScheme.matches ? "page dark-theme" : "page"}>
+                        <HeaderMain toggleClass={toggleClass} user={user} active={active} signOut={signOut}/>
                         <MainPage user={user} messageDB={messageDB} active={active}/>
                     </div>
                     :
-                    <div className="page">
-                        <header className="app__header">
-                            <div className="container">
-                                <div className="logo">
-                                    <h1 className="logo-title">
-                                        <strong>Super</strong>
-                                        <span>Message app</span>
-                                    </h1>
-                                </div>
-                                <nav className="app__header-nav">
-                                    <ul className="nav-list">
-                                        <li className="nav-list-text">
-                                            <Button onClick={signIn}>Sign In</Button>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </header>
-                        <div className="main__page_signout">
-                            <div className="main__page_signout-text">
-                                <h1 className="logo-title">
-                                    <strong>Super</strong>
-                                    <span>Message app</span>
-                                </h1>
-                                <h1>Sign in to use application</h1>
-                            </div>
-                        </div>
-                        <section>
-                            <div className="wave wave1"/>
-                            <div className="wave wave2"/>
-                            <div className="wave wave3"/>
-                            <div className="wave wave4"/>
-                        </section>
+                    <div className={ prefersDarkScheme.matches ? "page dark-theme" : "page"}>
+                        <HeaderStartPage signIn={signIn}/>
+                        <MainStartPage/>
                     </div>
             }
         </>

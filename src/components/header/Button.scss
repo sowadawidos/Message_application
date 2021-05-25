@@ -1,7 +1,12 @@
 $body-font: 'KoHo', sans-serif;
 $font-color: aliceblue;
 $message-lis-color: #7a7e92;
-
+.page.dark-theme {
+  .sign__button {
+    background-color: transparent;
+    color: black;
+  }
+}
 .sign__button {
   cursor: pointer;
   background-color: #6683F4;

@@ -64,6 +64,47 @@ $message-lis-color: #7a7e92;
 * {
   box-sizing: border-box;
 }
+.page.dark-theme {
+  background-color: #262626;
+  height: 100vh;
+  font-family: $body-font;
+  .main__page_signout {
+    .main__page_signout-text {
+      background: #D1C3FF;
+      box-shadow: 0 0 1em #D1C3FF;
+      strong {
+        color: black;
+      }
+      span {
+        color: black;
+      }
+    }
+  }
+
+  .app__header {
+    background: #D1C3FF;
+    box-shadow: none;
+    .container {
+      .logo {
+        strong {
+          color: black;
+        }
+        span {
+         color: black;
+        }
+      }
+      .hamburger {
+        background-color: transparent;
+      }
+    }
+  }
+  section {
+    .wave {
+      background: url("images/wave-darkmode.png");
+      background-size: 1000px 100px;
+    }
+  }
+}
 
 .page {
   background-color: #eaf6fd;
@@ -258,7 +299,29 @@ $message-lis-color: #7a7e92;
     background-position-x: 1000px;
   }
 }
+@media (min-width: 1440px) {
+  .page {
+    .main__page {
+      .container {
+        width: 1980px;
+      }
+    }
+    .user {
+      .user__page-list {
+        width: 30%;
+      }
+    }
+  }
 
+  .page.dark-theme {
+    .user {
+      .user__page-list {
+        width: 30%;
+      }
+    }
+  }
+
+}
 @media (max-width: 880px) {
   .main__page {
     .container {

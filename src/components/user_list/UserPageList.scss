@@ -2,6 +2,49 @@ $body-font: 'KoHo', sans-serif;
 $font-color: aliceblue;
 $message-lis-color: #7a7e92;
 
+//dark mode
+.page.dark-theme {
+  .user__page-list {
+    background-color: #323334;
+    border-right: 1px solid #323334;
+  }
+  .users__list {
+    h1 {
+      color: white;
+    }
+      .user-logo {
+        &:hover {
+          background: #262626;
+        }
+        button {
+          background: #323334;
+          &:hover {
+            background-color: #262626;
+          }
+        }
+        .user-logo-name {
+          color: white;
+        }
+      }
+  }
+  .user-list {
+    .user-list-title {
+      color: white;
+    }
+    .users {
+      &:hover::after {
+        color: white;
+      }
+      .user-description {
+        .user-desc-unread {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+//light mode
 .user__page-list {
   width: 330px;
   border-right: 1px solid #d3dce2;
