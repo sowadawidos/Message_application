@@ -7,7 +7,12 @@
     }
     .messages {
       .messages__left {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: auto;
         .message {
+          overflow-wrap: break-word;
+          margin-top: 5px;
           background-color: #D1C3FF;
           box-shadow: 0 0 1em #D1C3FF;
           p {
@@ -16,9 +21,13 @@
         }
       }
       .messages__right {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: auto;
         .message {
           background-color: #5A42D2;
           box-shadow: 0 0 1em #5A42D2;
+          overflow-wrap: break-word;
           p {
             color: white;
           }
@@ -73,7 +82,8 @@
       display: flex;
       align-items: center;
       margin-bottom: 10px;
-      height: 85px;
+      margin-top: 10px;
+      height: auto;
 
       img {
         width: 50px;
@@ -109,7 +119,8 @@
       align-items: center;
       margin-bottom: 10px;
       color: white;
-      height: 85px;
+      margin-top: 10px;
+      height: auto;
 
       img {
         margin-left: 10px;
