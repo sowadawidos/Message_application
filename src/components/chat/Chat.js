@@ -33,7 +33,7 @@ export const Chat = ({user, messageDB, messageID, image, name, active}) => {
     const onSubmit = event => {
         event.preventDefault();
 
-        if (messageDB) {
+        if (messageDB && newMessages.length > 0) {
             messageDB.collection('messages').doc(`${messageID}`).collection('message').add({
                 text: newMessages,
                 date: firebase.firestore.FieldValue.serverTimestamp(),
